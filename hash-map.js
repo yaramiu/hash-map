@@ -67,4 +67,14 @@ class HashMap {
       return null;
     }
   }
+
+  has(key) {
+    const index = this.hash(key);
+
+    if (!this.buckets[index]) {
+      return false;
+    }
+
+    return this.buckets[index].contains(key);
+  }
 }
