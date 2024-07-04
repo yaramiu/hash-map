@@ -103,4 +103,12 @@ class HashMap {
     this.buckets[index].removeAt(keyIndex);
     return true;
   }
+
+  length() {
+    let numKeys = 0;
+    this.buckets.forEach((bucket) => {
+      numKeys += bucket.size();
+    });
+    return numKeys;
+  }
 }
