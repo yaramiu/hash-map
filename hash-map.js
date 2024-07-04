@@ -54,6 +54,10 @@ class HashMap {
   get(key) {
     const index = this.hash(key);
 
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bound");
+    }
+
     if (!this.buckets[index]) {
       return null;
     }
@@ -70,6 +74,10 @@ class HashMap {
 
   has(key) {
     const index = this.hash(key);
+
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bound");
+    }
 
     if (!this.buckets[index]) {
       return false;
