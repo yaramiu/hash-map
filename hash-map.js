@@ -117,4 +117,17 @@ class HashMap {
     this.buckets = new Array(this.capacity);
     this.currentCapacity = 0;
   }
+
+  keys() {
+    const allKeys = [];
+    this.buckets.forEach((bucket) => {
+      let currentNode = bucket.head();
+      while (currentNode) {
+        const currentKey = currentNode.key;
+        allKeys.push(currentKey);
+        currentNode = currentNode.nextNode;
+      }
+    });
+    return allKeys;
+  }
 }
