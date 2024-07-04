@@ -130,4 +130,17 @@ class HashMap {
     });
     return allKeys;
   }
+
+  values() {
+    const allValues = [];
+    this.buckets.forEach((bucket) => {
+      let currentNode = bucket.head();
+      while (currentNode) {
+        const currentValue = currentNode.value;
+        allValues.push(currentValue);
+        currentNode = currentNode.nextNode;
+      }
+    });
+    return allValues;
+  }
 }
