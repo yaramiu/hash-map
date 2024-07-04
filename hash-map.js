@@ -143,4 +143,17 @@ class HashMap {
     });
     return allValues;
   }
+
+  entries() {
+    const allEntries = [];
+    const allKeys = this.keys();
+    const allValues = this.values();
+    for (let i = 0; i < allKeys.length; i++) {
+      const entry = [];
+      entry.push(allKeys[i]);
+      entry.push(allValues[i]);
+      allEntries.push(entry);
+    }
+    return allEntries;
+  }
 }
