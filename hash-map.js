@@ -20,7 +20,7 @@ class HashMap {
   set(key, value) {
     // TODO: Check and grow buckets if needed
 
-    let index = this.hash(key);
+    const index = this.hash(key);
 
     if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bound");
@@ -52,7 +52,7 @@ class HashMap {
   }
 
   get(key) {
-    let index = this.hash(key);
+    const index = this.hash(key);
 
     if (!this.buckets[index]) {
       return null;
