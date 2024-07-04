@@ -50,4 +50,21 @@ class HashMap {
       }
     }
   }
+
+  get(key) {
+    let index = this.hash(key);
+
+    if (!this.buckets[index]) {
+      return null;
+    }
+
+    const isExistingKey = this.buckets[index].contains(key);
+    if (isExistingKey) {
+      const keyIndex = this.buckets[index].find(key);
+      const targetNode = this.buckets[index].at(keyIndex);
+      return targetNode.value;
+    } else {
+      return null;
+    }
+  }
 }
