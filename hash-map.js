@@ -19,7 +19,16 @@ class HashMap {
   }
 
   set(key, value) {
-    // TODO: Check and grow buckets if needed
+    const growBucket = () => {
+      const allEntries = this.entries();
+      this.capacity *= 2;
+      this.clear();
+      allEntries.forEach((entry) => {
+        const [entryKey, entryValue] = [entry[0], entry[1]];
+        this.set(entryKey, entryValue);
+      });
+    };
+    const growthThreshold = Math.ceil(this.capacity * this.loadFactor);
 
     const index = this.hash(key);
 
@@ -28,6 +37,11 @@ class HashMap {
     }
 
     if (!this.buckets[index]) {
+      this.currentCapacity++;
+      if (this.currentCapacity > growthThreshold) {
+        growBucket();
+      }
+
       const linkedList = new LinkedList();
       linkedList.append(key);
       linkedList.head().value = value;
@@ -46,6 +60,11 @@ class HashMap {
           currentNode = currentNode.nextNode;
         }
       } else {
+        this.currentCapacity++;
+        if (this.currentCapacity > growthThreshold) {
+          growBucket();
+        }
+
         this.buckets[index].append(key);
         this.buckets[index].tail().value = value;
       }
