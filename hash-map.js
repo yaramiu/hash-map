@@ -4,6 +4,7 @@ class HashMap {
   capacity = 16;
   buckets = new Array(this.capacity);
   loadFactor = 0.75;
+  currentCapacity = 0;
 
   hash(key) {
     let hashCode = 0;
@@ -110,5 +111,10 @@ class HashMap {
       numKeys += bucket.size();
     });
     return numKeys;
+  }
+
+  clear() {
+    this.buckets = new Array(this.capacity);
+    this.currentCapacity = 0;
   }
 }
