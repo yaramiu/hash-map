@@ -85,4 +85,22 @@ class HashMap {
 
     return this.buckets[index].contains(key);
   }
+
+  remove(key) {
+    const isExistingKey = this.has(key);
+
+    if (!isExistingKey) {
+      return false;
+    }
+
+    const index = this.hash(key);
+
+    if (index < 0 || index >= this.buckets.length) {
+      throw new Error("Trying to access index out of bound");
+    }
+
+    const keyIndex = this.buckets[index].find(key);
+    this.buckets[index].removeAt(keyIndex);
+    return true;
+  }
 }
