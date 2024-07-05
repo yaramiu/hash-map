@@ -1,6 +1,6 @@
 import { keyLinkedList as LinkedList } from "./linked-list.js";
 
-class HashMap {
+export class HashMap {
   capacity = 16;
   buckets = new Array(this.capacity);
   loadFactor = 0.75;
