@@ -1,6 +1,9 @@
 import { HashMap } from "./hash-map.js";
+import { HashSet } from "./hash-set.js";
 
+console.log("testing hash map");
 const test = new HashMap();
+console.log("");
 
 console.log("populate hash map");
 test.set("apple", "red");
@@ -91,3 +94,72 @@ console.log("clear hash map");
 test.clear();
 console.log("get number of keys in empty hash map");
 console.log(test.length());
+console.log("");
+
+console.log("testing hash set");
+const testSet = new HashSet();
+console.log("");
+
+console.log("populate hash set");
+testSet.set("apple");
+testSet.set("banana");
+testSet.set("carrot");
+testSet.set("dog");
+testSet.set("elephant");
+testSet.set("frog");
+testSet.set("grape");
+testSet.set("hat");
+testSet.set("ice cream");
+testSet.set("jacket");
+testSet.set("kite");
+testSet.set("lion");
+console.log(testSet.buckets);
+console.log("");
+
+console.log("expand buckets");
+testSet.set("moon", "silver");
+console.log(testSet.buckets);
+console.log("");
+console.log("check if added node exists");
+console.log(testSet.buckets[14]);
+console.log("");
+
+console.log("get hash set keys");
+console.log(testSet.keys());
+console.log("");
+
+console.log("get value from single node linked list");
+console.log(testSet.get("banana"));
+console.log("get value from multi node linked list");
+console.log(testSet.get("dog"));
+console.log("get value from a key that doesn't exist");
+console.log(testSet.get("cat"));
+console.log("");
+
+console.log("has key in single node linked list");
+console.log(testSet.has("banana"));
+console.log("has key in multi node linked list");
+console.log(testSet.has("dog"));
+console.log("checking non-existent key in hash set");
+console.log(testSet.has("cat"));
+console.log("");
+
+console.log("remove single node");
+console.log(testSet.remove("banana"));
+console.log(testSet.buckets[1]);
+console.log("remove child node");
+console.log(testSet.remove("grape"));
+console.log(testSet.buckets[5]);
+console.log("remove parent node");
+console.log(testSet.remove("apple"));
+console.log(testSet.buckets[5]);
+console.log("remove non-existent key");
+console.log(testSet.remove("cat"));
+console.log("");
+
+console.log("get number of keys in hash set");
+console.log(testSet.length());
+console.log("clear hash set");
+testSet.clear();
+console.log("get number of keys in empty hash set");
+console.log(testSet.length());

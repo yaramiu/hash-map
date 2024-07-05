@@ -1,7 +1,7 @@
 import { HashMap } from "./hash-map.js";
 import { keyLinkedList as LinkedList } from "./linked-list.js";
 
-class HashSet extends HashMap {
+export class HashSet extends HashMap {
   constructor() {
     super();
     delete this.values;
